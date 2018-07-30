@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+  font-family: monospace;
+
+}
+
+textarea {
+  width: 35rem;
+  height: 10rem;
+}
+
+#result {
+  max-width: 40rem;
+}
