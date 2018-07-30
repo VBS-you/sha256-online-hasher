@@ -77,7 +77,8 @@
     }
 
     function set_result() {
-      set_id_val("result", generate_hash(input = get_id_val("input"), each_line = get_id("hash-lines").checked, upper_case =
+      set_id_val("result", generate_hash(input = get_id_val("input"), each_line = get_id("hash-lines").checked,
+        upper_case =
         get_id("upper-case").checked));
 
       if (get_id_val("input") === "") {

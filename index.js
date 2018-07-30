@@ -27,7 +27,7 @@ function hash_each_line(input) {
   return input_hash_all;
 }
 
-function generate_hash(input, each_line=false, upper_case=false) {
+function generate_hash(input, each_line = false, upper_case = false) {
   let hash;
   if (each_line) {
     hash = hash_each_line(input);
