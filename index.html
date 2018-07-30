@@ -23,22 +23,22 @@
   <main role="application">
     <div class="row" role="separator">
       <h2>Input:</h2>
-      <textarea id="input" onkeyup="set_result()" autofocus></textarea>
+      <textarea id="input" onkeyup="setResult()" autofocus></textarea>
     </div>
 
     <div class="row" role="separator">
       <div class="col">
-        <button onclick="copy_hash(get_id('result'))">Copy</button>
+        <button onclick="copyHash(getId('result'))">Copy</button>
       </div>
       <div class="col">
-        <button onclick="clear_all()">Clear</button>
+        <button onclick="clearAll()">Clear</button>
       </div>
       <div class="col">
-        <input type="checkbox" name="hash-lines" id="hash-lines" onclick="set_result()">
+        <input type="checkbox" name="hash-lines" id="hash-lines" onclick="setResult()">
         <label for="hash-lines">Hash each new line</label>
       </div>
       <div class="col">
-        <input type="checkbox" name="upper-case" id="upper-case" onclick="set_result()">
+        <input type="checkbox" name="upper-case" id="upper-case" onclick="setResult()">
         <label for="upper-case">Use upper case</label>
       </div>
     </div>
@@ -52,48 +52,50 @@
   <script src="./sha256.js"></script>
   <script src="./index.js"></script>
   <script>
-    function select_id(id) {
+    function selectId(id) {
       document.getElementById(id).select();
     }
 
-    function get_id(id) {
+    function getId(id) {
       return document.getElementById(id);
     }
 
-    function set_id_val(id, res) {
+    function setIdVal(id, res) {
       document.getElementById(id).value = res;
     }
 
-    function clear_id_val(id) {
+    function clearIdVal(id) {
       document.getElementById(id).value = "";
     }
 
-    function focus_id(id) {
+    function focusId(id) {
       document.getElementById(id).focus();
     }
 
-    function get_id_val(id) {
+    function getIdVal(id) {
       return document.getElementById(id).value;
     }
 
-    function set_result() {
-      set_id_val("result", generate_hash(input = get_id_val("input"), each_line = get_id("hash-lines").checked,
-        upper_case =
-        get_id("upper-case").checked));
+    function setResult() {
+      setIdVal("result", generate_hash(
+        input = getIdVal("input"),
+        eachLine = getId("hash-lines").checked,
+        upperCase = getId("upper-case").checked)
+      );
 
-      if (get_id_val("input") === "") {
-        set_id_val("result", "");
+      if (getIdVal("input") === "") {
+        setIdVal("result", "");
       }
     }
 
-    function clear_all() {
-      clear_id_val("input");
-      clear_id_val("result");
-      focus_id("input");
+    function clearAll() {
+      clearIdVal("input");
+      clearIdVal("result");
+      focusId("input");
     }
 
-    function copy_hash() {
-      select_id("result");
+    function copyHash() {
+      selectId("result");
       document.execCommand("Copy");
     }
   </script>
