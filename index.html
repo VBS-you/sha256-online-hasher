@@ -23,12 +23,12 @@
   <main role="application">
     <div class="row" role="separator">
       <p>Enter text here:</p>
-      <textarea id="input" class="texts" onkeyup="set_result()" autofocus></textarea>
+      <textarea id="input" onkeyup="set_result()" autofocus></textarea>
     </div>
 
     <div class="row" role="separator">
       <button onclick="clear_all()">Clear</button>
-      <input type="checkbox" hashtabindex="2" name="hash-lines" id="hash-lines" onclick="set_result()">
+      <input type="checkbox" name="hash-lines" id="hash-lines" onclick="set_result()">
       <label for="hash-lines">Treat each line as a separate string</label>
     </div>
 
