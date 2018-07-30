@@ -7,7 +7,7 @@ function hash_each_line(input) {
   if (input.search("\r\n") > 0) {
     input_lines = input.split("\r\n");
   } else if (input.search("\r") > 0) {
-    input_lines = input.split("\r");
+    input_lines = input.split("\r")
   } else if (input.search("\n") > 0) {
     input_lines = input.split("\n");
   } else {
@@ -19,7 +19,6 @@ function hash_each_line(input) {
   for (let i in input_lines) {
     if (input_lines[i].length !== 0) {
       input_hash_tmp = hex_sha256(input_lines[i]);
-      input_hash_tmp = input_hash_tmp.toUpperCase();
     } else {
       input_hash_tmp = "";
     }
@@ -28,16 +27,22 @@ function hash_each_line(input) {
   return input_hash_all;
 }
 
-function generate_hash(input, each_line=false) {
+function generate_hash(input, each_line=false, upper_case=false) {
+  let hash;
   if (each_line) {
-    return hash_each_line(input);
+    hash = hash_each_line(input);
   } else {
     if (input.search("\r") > 0) {
       input = replace_all("\r", "", input);
     }
     let input_hash = hex_sha256(input);
-    input_hash = input_hash.toUpperCase();
 
-    return input_hash;
+    hash = input_hash;
   }
+
+  if (upper_case) {
+    hash = hash.toUpperCase();
+  }
+
+  return hash;
 }

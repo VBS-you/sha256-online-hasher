@@ -22,28 +22,38 @@
 
   <main role="application">
     <div class="row" role="separator">
-      <p>Enter text here:</p>
+      <h2>Input:</h2>
       <textarea id="input" onkeyup="set_result()" autofocus></textarea>
     </div>
 
     <div class="row" role="separator">
+      <button onclick="copy_hash(get_id('result'))">Copy</button>
       <button onclick="clear_all()">Clear</button>
       <input type="checkbox" name="hash-lines" id="hash-lines" onclick="set_result()">
       <label for="hash-lines">Hash each new line</label>
+      <input type="checkbox" name="upper-case" id="upper-case" onclick="set_result()">
+      <label for="upper-case">Use upper case</label>
     </div>
 
     <div class="row" role="separator">
-      <p>
-        <samp id="result"></samp>
-      </p>
+      <h2>Output:</h2>
+      <textarea id="result"></textarea>
     </div>
   </main>
 
   <script src="./sha256.js"></script>
   <script src="./index.js"></script>
   <script>
+    function select_id(id) {
+      document.getElementById(id).select();
+    }
+
+    function get_id(id) {
+      return document.getElementById(id);
+    }
+
     function set_id(id, res) {
-      document.getElementById(id).innerHTML = res;
+      document.getElementById(id).value = res;
     }
 
     function clear_id(id) {
@@ -63,7 +73,8 @@
     }
 
     function set_result() {
-      set_id("result", generate_hash(get_id_val("input"), document.getElementById("hash-lines").checked));
+      set_id("result", generate_hash(input = get_id_val("input"), each_line = get_id("hash-lines").checked, upper_case =
+        get_id("upper-case").checked));
 
       if (get_id_val("input") === "") {
         set_id("result", "");
@@ -71,9 +82,15 @@
     }
 
     function clear_all() {
-      clear_id_val('input');
-      clear_id('result');
-      focus_id('input');
+      clear_id_val("input");
+      clear_id("result");
+      focus_id("input");
+    }
+
+    function copy_hash() {
+      select_id("result");
+      document.execCommand("Copy");
+      focus_id("input");
     }
   </script>
   <!--[if lt IE 7]>

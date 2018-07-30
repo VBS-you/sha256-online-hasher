@@ -4,12 +4,12 @@
 }
 
 textarea {
-  width: 35rem;
+  width: 40rem;
   height: 10rem;
 }
 
-.row {
-  max-width: 40rem;
+h2 {
+  margin-bottom: 0;
 }
 
 @media only screen and (max-width: 600px) {
@@ -17,9 +17,5 @@ textarea {
   .row,
   p {
     width: 100%;
-  }
-
-  samp {
-    word-wrap: break-word;
   }
 }
