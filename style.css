@@ -1,7 +1,6 @@
 * {
   box-sizing: border-box;
   font-family: monospace;
-
 }
 
 textarea {
@@ -9,6 +8,6 @@ textarea {
   height: 10rem;
 }
 
-#result {
+.row {
   max-width: 40rem;
 }

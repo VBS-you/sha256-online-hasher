@@ -16,28 +16,55 @@
 </head>
 
 <body>
-  <h1>SHA256</h1>
-  <p>Enter text here:</p>
-  <textarea id="input" class="texts" onkeyup="set_result()" autofocus></textarea>
-  <br>
-  <button onclick="clear_all()">Clear</button>
-  <input type="checkbox" name="hash_lines" id="hash_lines" onclick="set_result()">
-  <span>Treat each line as a separate string</span>
+  <header role="banner">
+    <h1>SHA256</h1>
+  </header>
 
-  <p id="result"></p>
+  <main role="application">
+    <div class="row" role="separator">
+      <p>Enter text here:</p>
+      <textarea id="input" class="texts" onkeyup="set_result()" autofocus></textarea>
+    </div>
 
-  <script src="./index.js"></script>
+    <div class="row" role="separator">
+      <button onclick="clear_all()">Clear</button>
+      <input type="checkbox" hashtabindex="2" name="hash-lines" id="hash-lines" onclick="set_result()">
+      <label for="hash-lines">Treat each line as a separate string</label>
+    </div>
+
+    <div class="row" role="separator">
+      <p>
+        <samp id="result"></samp>
+      </p>
+    </div>
+  </main>
+
   <script src="./sha256.js"></script>
+  <script src="./index.js"></script>
   <script>
-    function set_id(id, res) { document.getElementById(id).innerHTML = res; }
-    function clear_id(id) { document.getElementById(id).innerHTML = ""; }
-    function clear_id_val(id) { document.getElementById(id).value = ""; }
-    function focus_id(id) { document.getElementById(id).focus(); }
-    function get_id_val(id) { return document.getElementById(id).value; }
+    function set_id(id, res) {
+      document.getElementById(id).innerHTML = res;
+    }
+
+    function clear_id(id) {
+      document.getElementById(id).innerHTML = "";
+    }
+
+    function clear_id_val(id) {
+      document.getElementById(id).value = "";
+    }
+
+    function focus_id(id) {
+      document.getElementById(id).focus();
+    }
+
+    function get_id_val(id) {
+      return document.getElementById(id).value;
+    }
 
     function set_result() {
-      set_id("result", generate_hash(get_id_val("input"), document.getElementById("hash_lines").checked));
-      
+      set_id("result", generate_hash(get_id_val("input"), document.getElementById("hash-lines").checked));
+
       if (get_id_val("input") === "") {
         set_id("result", "");
       }
@@ -49,6 +76,9 @@
       focus_id('input');
     }
   </script>
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
 </body>
 
 </html>
