@@ -29,25 +29,11 @@
   <script src="./index.js"></script>
   <script src="./sha256.js"></script>
   <script>
-    function set_id(id, res) {
-      document.getElementById(id).innerHTML = res;
-    }
-
-    function clear_id(id) {
-      document.getElementById(id).innerHTML = "";
-    }
-
-    function clear_id_val(id) {
-      document.getElementById(id).value = "";
-    }
-
-    function focus_id(id) {
-      document.getElementById(id).focus();
-    }
-
-    function get_id_val(id) {
-      return document.getElementById(id).value;
-    }
+    function set_id(id, res) { document.getElementById(id).innerHTML = res; }
+    function clear_id(id) { document.getElementById(id).innerHTML = ""; }
+    function clear_id_val(id) { document.getElementById(id).value = ""; }
+    function focus_id(id) { document.getElementById(id).focus(); }
+    function get_id_val(id) { return document.getElementById(id).value; }
 
     function set_result() {
       set_id("result", generate_hash(get_id_val("input"), document.getElementById("hash_lines").checked));
