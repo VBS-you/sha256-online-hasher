@@ -86,6 +86,8 @@
       if (getIdVal("input") === "") {
         setIdVal("result", "");
       }
+
+      getId("result").scrollTop = getId("result").scrollHeight;
     }
 
     function clearAll() {
