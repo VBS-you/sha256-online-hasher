@@ -65,7 +65,7 @@
     }
 
     function clearIdVal(id) {
-      document.getElementById(id).value = "";
+      document.getElementById(id).value = '';
     }
 
     function focusId(id) {
@@ -77,28 +77,28 @@
     }
 
     function setResult() {
-      setIdVal("result", generate_hash(
-        input = getIdVal("input"),
-        eachLine = getId("hash-lines").checked,
-        upperCase = getId("upper-case").checked)
+      setIdVal('result', generate_hash(
+        input = getIdVal('input'),
+        eachLine = getId('hash-lines').checked,
+        upperCase = getId('upper-case').checked)
       );
 
-      if (getIdVal("input") === "") {
-        setIdVal("result", "");
+      if (getIdVal('input') === '') {
+        setIdVal('result', '');
       }
 
-      getId("result").scrollTop = getId("result").scrollHeight;
+      getId('result').scrollTop = getId('result').scrollHeight;
     }
 
     function clearAll() {
-      clearIdVal("input");
-      clearIdVal("result");
-      focusId("input");
+      clearIdVal('input');
+      clearIdVal('result');
+      focusId('input');
     }
 
     function copyHash() {
-      selectId("result");
-      document.execCommand("Copy");
+      selectId('result');
+      document.execCommand('Copy');
     }
   </script>
   <!--[if lt IE 7]>
