@@ -1,16 +1,16 @@
 function hash(plaintext, upperCase = false) {
-  if (plaintext === "") {
-    return "";
+  if (plaintext === '') {
+    return '';
   }
 
-  let out = hex_sha256(plaintext.replace(new RegExp("\r", "g"), ""));
+  let out = hex_sha256(plaintext.replace(new RegExp('\r', 'g'), ''));
   return upperCase ? out.toUpperCase() : out
 }
 
 function hashEachLine(plaintext, upperCase = false) {
   return plaintext.split(/\r?\n/).map(function(line) { 
     return hash(line, upperCase); 
-  }).join("\n");
+  }).join('\n');
 }
 
 function generate_hash(plaintext, eachLine = false, upperCase = false) {
