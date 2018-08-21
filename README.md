@@ -20,4 +20,4 @@ All you need to do is type in your plaintext in the input text box and the resul
 * Makes the output all uppercase
 
 `Number of iterations`
-* Sets how many times the hash function will hash its output after hashing the input
+* Sets how many times the hash function will hash its output including the input hash (Default: 1)
