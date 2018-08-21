@@ -43,6 +43,14 @@
       </div>
     </div>
 
+    <br>
+
+    <div class="row" role="separator">
+      <label for="looper">Number of iterations: </label>
+      <input type="number" name="looper" id="looper" value="1" onkeyup="loopResult()" min="1">
+      <p>Warning: Going over 5000 iterations is not recommended.</p>
+    </div>
+
     <div class="row" role="separator">
       <h2>Output:</h2>
       <textarea id="result" readonly aria-readonly="true"></textarea>
@@ -74,6 +82,13 @@
 
     function getIdVal(id) {
       return document.getElementById(id).value;
+    }
+
+    function loopResult() {
+      for (let i = 0; i < getIdVal('looper'); i++) {
+        setResult();
+        setIdVal('input', getIdVal('result'));
+      }
     }
 
     function setResult() {
