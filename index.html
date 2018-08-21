@@ -47,7 +47,7 @@
 
     <div class="row" role="separator">
       <label for="looper">Number of iterations: </label>
-      <input type="number" name="looper" id="looper" value="1" onkeyup="loopResult()" min="1">
+      <input type="number" name="looper" id="looper" value="1" onkeyup="setResult()" min="1">
       <p>Warning: Going over 5000 iterations is not recommended.</p>
     </div>
 
@@ -84,19 +84,20 @@
       return document.getElementById(id).value;
     }
 
-    function loopResult() {
-      for (let i = 0; i < getIdVal('looper'); i++) {
-        setResult();
-        setIdVal('input', getIdVal('result'));
-      }
+    function getIdHash(id) {
+      return generate_hash(
+        input = getIdVal(id),
+        eachLine = getId('hash-lines').checked,
+        upperCase = getId('upper-case').checked
+      );
     }
 
     function setResult() {
-      setIdVal('result', generate_hash(
-        input = getIdVal('input'),
-        eachLine = getId('hash-lines').checked,
-        upperCase = getId('upper-case').checked)
-      );
+      setIdVal('result', getIdHash('input'));
+
+      for (let i = 0; i < getIdVal('looper') - 1; i++) {
+        setIdVal('result', getIdHash('result'));
+      }
 
       if (getIdVal('input') === '') {
         setIdVal('result', '');
