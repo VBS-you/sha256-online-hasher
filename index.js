@@ -3,7 +3,7 @@ function hash(plaintext, upperCase = false) {
     return '';
   }
 
-  let out = b64_sha256(plaintext.replace(new RegExp('\r', 'g'), ''));
+  let out = any_sha256(plaintext.replace(new RegExp('\r', 'g'), ''));
   return upperCase ? out.toUpperCase() : out
 }
 
